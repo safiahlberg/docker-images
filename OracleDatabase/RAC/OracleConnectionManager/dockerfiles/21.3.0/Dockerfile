@@ -12,6 +12,8 @@
 #     Oracle Database 21c Client (21.3) for Linux x86-64
 #     Download Oracle Connection Manager as part of the Oracle Database Client
 #     from https://www.oracle.com/technetwork/database/enterprise-edition/downloads/oracle21c-linux-210000-5022980.html 
+#     from https://www.oracle.com/database/technologies/oracle21c-linux-downloads.html
+#     from https://download.oracle.com/otn/linux/oracle21c/LINUX.X64_213000_client.zip
 #
 # HOW TO BUILD THIS IMAGE
 # -----------------------
