@@ -28,13 +28,13 @@ on:
         required: false
       lang:
         description: List of languages to build
-        default: 'gcc-toolset, golang, nginx, nodejs, php, python, ruby'
+        default: 'gcc-toolset, golang, nginx, nodejs, php, python, redis, ruby'
         required: false
 
 # Default values for the builds triggered by the push event
 env:
   ol: 'oraclelinux7, oraclelinux8'
-  lang: 'gcc-toolset, golang, nodejs, nginx, php, python, ruby'
+  lang: 'gcc-toolset, golang, nodejs, nginx, php, python, redis, ruby'
 
 jobs:
   prepare:
@@ -153,7 +153,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image - amd64
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: OracleLinuxDevelopers/${{ matrix.ol }}/${{ matrix.lang }}/${{ matrix.tag }}
           platforms: linux/amd64
@@ -163,7 +163,7 @@ jobs:
             "ghcr.io/${{ needs.prepare.outputs.repository_owner }}/${{ matrix.ol }}-${{ matrix.lang }}:${{ matrix.tag }}${{ matrix.multi && '-amd64' || '' }}"
 
       - name: Build image - arm64
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         if: matrix.multi
         with:
           context: OracleLinuxDevelopers/${{ matrix.ol }}/${{ matrix.lang }}/${{ matrix.tag }}
